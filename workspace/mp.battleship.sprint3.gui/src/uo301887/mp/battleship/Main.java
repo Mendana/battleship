@@ -31,10 +31,10 @@ public class Main {
 		GUIContainer container = new GUIContainer(10);				
 		GUIGamePresenter ggp = container.getPresenter();
 		
-		Player computer = new Player("The Machine");
+		Player computer = new Player("The Machine", 0);
 		computer.setInteractor(new RandomGameInteractor(10));
 
-		Player user = new Player("The Person");
+		Player user = new Player("The Person", 1);
 		user.setInteractor(container.getInteractor());
 
 		game = new Game( user, computer );

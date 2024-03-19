@@ -20,7 +20,7 @@ class BoardShootAtTest {
 		coordWithShipNotSink = new Coordinate(0,2);
 		coordWithShipSink = new Coordinate(0,0);
 		coordEmpty = new Coordinate(0,1);
-		board = new Board(10);
+		board = new Board(10, false);
 	}
 	
 	/**

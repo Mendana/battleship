@@ -13,7 +13,7 @@ class BoardIsFleetSunkTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		board = new Board(10);
+		board = new Board(10, false);
 	}
 
 	/**

@@ -28,9 +28,9 @@ public class Main {
 		ConsoleGameInteractor gameInteractor = new ConsoleGameInteractor();
 		RandomGameInteractor randGameInteractor = new RandomGameInteractor(10);
 		
-		Player user = new Player("User");
+		Player user = new Player("User", 1);
 		user.setInteractor(gameInteractor);
-		Player computer = new Player("Computer");
+		Player computer = new Player("Computer", 0);
 		computer.setInteractor(randGameInteractor);
 		
 		ConsoleGamePresenter presenter = new ConsoleGamePresenter();

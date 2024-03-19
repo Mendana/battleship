@@ -1,13 +1,16 @@
 package uo301887.mp.battleship.model.player;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import uo.mp.util.check.ArgumentChecks;
+import uo.mp.util.console.Console;
 import uo301887.mp.battleship.interaction.GameInteractor;
 import uo301887.mp.battleship.model.board.Board;
 import uo301887.mp.battleship.model.board.Coordinate;
 import uo301887.mp.battleship.model.board.Square.Damage;
+import uo301887.mp.battleship.model.board.Bomb;
 
 public class Player {
 
@@ -17,6 +20,7 @@ public class Player {
 	private Board myOpponentShips;
 	private GameInteractor gameInteractor;
 	private List<Coordinate> shotCoordinates = new ArrayList<>();
+	private Bomb bomb; 
 
 	/**
 	 * Constructor with the name parameter
@@ -24,10 +28,11 @@ public class Player {
 	 * @param name, String with the name of the player
 	 * @throws IllegalArgumentException if the name is blank or null
 	 */
-	public Player(String name) {
+	public Player(String name,int numberBombs) {
 		ArgumentChecks.isNotNull(name);
 		ArgumentChecks.isNotBlank(name);
 		setName(name);
+		bomb=new Bomb(numberBombs);
 	}
 	/**
 	 * This method returns the player´s name
@@ -108,11 +113,35 @@ public class Player {
 	 */
 	public Coordinate makeChoice() {
 		do {
-			Coordinate coordinateToShot = getGameInteractor().getTarget();
-			if(!shotCoordinates.contains(coordinateToShot)) {
-				shotCoordinates.add(coordinateToShot);
-				return coordinateToShot;
+			if (this.bomb.getRemainingUse()>0) {
+				System.out.print("Do you want to use Bomb? ( press #) ");
+
+				char caracter = Console.readChar();
+				Coordinate coordinateToShot = getGameInteractor().getTarget();
+				if (caracter == '#') {
+					shotCoordinates.addAll(this.useBomb(coordinateToShot));
+					return coordinateToShot;
+				}
+				else {
+					if(!shotCoordinates.contains(coordinateToShot)) {
+						shotCoordinates.add(coordinateToShot);
+						return coordinateToShot;
+					}
+				}
+				
 			}
+			else {
+				Coordinate coordinateToShot = getGameInteractor().getTarget();
+
+				
+				if(!shotCoordinates.contains(coordinateToShot)) {
+					shotCoordinates.add(coordinateToShot);
+					return coordinateToShot;
+				}
+				
+			}
+			
+			
 		} while (true);
 	}
 	
@@ -144,5 +173,22 @@ public class Player {
 	GameInteractor getGameInteractor() {
 		return this.gameInteractor;
 	}
+	
+	public void getBomb(Bomb bomb) {
+        this.bomb = bomb;
+    }
+
+
+
+    public ArrayList<Coordinate> useBomb(Coordinate position) {
+    	ArrayList<Coordinate> res= new ArrayList<Coordinate>();
+        if (bomb.getRemainingUse()>0) {
+            bomb.trigger();
+            res=bomb.explode(position,this.myOpponentShips);
+        } else {
+            System.out.println("No bomb available for this player!");
+        }
+        return res;
+    }
 
 }
