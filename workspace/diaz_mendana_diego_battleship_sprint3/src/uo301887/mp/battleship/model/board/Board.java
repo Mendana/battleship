@@ -53,9 +53,10 @@ public class Board {
 	 * Constructor with the size of the board
 	 * 
 	 * @param size, int with size of the board
+	 * @param random, boolean with true if the board is going to be random
 	 */
-	public Board(int size){
-		grid = BoardBuilder.build(size, FLEET);
+	public Board(int size, boolean random){
+		grid = (random)? RandomBoardBuilder.build(size, FLEET):BoardBuilder.build(size, FLEET);
 	}
 	
 	/**
