@@ -11,6 +11,8 @@ import uo301887.mp.battleship.model.board.Board;
 import uo301887.mp.battleship.model.board.Coordinate;
 import uo301887.mp.battleship.model.board.Square.Damage;
 import uo301887.mp.battleship.model.board.Bomb;
+import uo301887.mp.battleship.model.board.LineDestroyer;
+
 
 public class Player {
 
@@ -21,6 +23,7 @@ public class Player {
 	private GameInteractor gameInteractor;
 	private List<Coordinate> shotCoordinates = new ArrayList<>();
 	private Bomb bomb; 
+	private LineDestroyer lineDestroyer;
 
 	/**
 	 * Constructor with the name parameter
@@ -28,11 +31,13 @@ public class Player {
 	 * @param name, String with the name of the player
 	 * @throws IllegalArgumentException if the name is blank or null
 	 */
-	public Player(String name,int numberBombs) {
+	public Player(String name,int numberBombs,int numberLineDestroyer) {
 		ArgumentChecks.isNotNull(name);
 		ArgumentChecks.isNotBlank(name);
 		setName(name);
 		bomb=new Bomb(numberBombs);
+		lineDestroyer= new LineDestroyer(numberLineDestroyer);
+		
 	}
 	/**
 	 * This method returns the player´s name
@@ -113,8 +118,36 @@ public class Player {
 	 */
 	public Coordinate makeChoice() {
 		do {
-			if (this.bomb.getRemainingUse()>0) {
-				System.out.print("Do you want to use Bomb? ( press #) ");
+			if (this.bomb.getRemainingUse()>0 && this.lineDestroyer.getRemainingUse()>0) {
+				System.out.println("------Bonus options-----");
+				System.out.println("Bomb ------------ Press #");
+				System.out.println("LineDestroyer --- Press @");
+				System.out.print("For using the press the key: ");
+
+
+				char caracter = Console.readChar();
+				Coordinate coordinateToShot = getGameInteractor().getTarget();
+				if (caracter == '#') {
+					shotCoordinates.addAll(this.useBomb(coordinateToShot));
+					return coordinateToShot;
+				}
+				else if (caracter == '@') {
+					shotCoordinates.addAll(this.useLineDestroyer(coordinateToShot));
+					return coordinateToShot;
+				}
+				
+				else {
+					if(!shotCoordinates.contains(coordinateToShot)) {
+						shotCoordinates.add(coordinateToShot);
+						return coordinateToShot;
+					}
+				}
+				
+			}
+			else if (this.bomb.getRemainingUse()>0) {
+				System.out.println("Do you want to use Bomb ?");
+				System.out.print("Bomb : press #");
+
 
 				char caracter = Console.readChar();
 				Coordinate coordinateToShot = getGameInteractor().getTarget();
@@ -128,7 +161,25 @@ public class Player {
 						return coordinateToShot;
 					}
 				}
+			}
+			else if (this.lineDestroyer.getRemainingUse()>0) {
+				System.out.println("Do you want to use line destroyer ?");
+				System.out.print("LineDestroyer : press @");
+
+
+				char caracter = Console.readChar();
+				Coordinate coordinateToShot = getGameInteractor().getTarget();
+				if (caracter == '@') {
+					shotCoordinates.addAll(this.useLineDestroyer(coordinateToShot));
+					return coordinateToShot;
+				}
 				
+				else {
+					if(!shotCoordinates.contains(coordinateToShot)) {
+						shotCoordinates.add(coordinateToShot);
+						return coordinateToShot;
+					}
+				}
 			}
 			else {
 				Coordinate coordinateToShot = getGameInteractor().getTarget();
@@ -190,5 +241,17 @@ public class Player {
         }
         return res;
     }
+    
+    public ArrayList<Coordinate> useLineDestroyer(Coordinate position) {
+    	ArrayList<Coordinate> res= new ArrayList<Coordinate>();
+        if (lineDestroyer.getRemainingUse()>0) {
+        	lineDestroyer.trigger();
+            res=lineDestroyer.explode(position,this.myOpponentShips);
+        } else {
+            System.out.println("No bomb available for this player!");
+        }
+        return res;
+    }
+
 
 }
