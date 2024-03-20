@@ -42,7 +42,7 @@ public class Game {
 		setHuman(human);
 		setComputer(computer);
 		turnSelector = new TurnSelector(human, computer);
-		Board humanBoard = new Board(size, false);
+		Board humanBoard = new Board(size, true);
 		Board computerBoard = new Board(size, true);
 		
 		human.setMyShips(humanBoard);

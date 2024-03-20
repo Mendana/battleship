@@ -4,20 +4,21 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-import team2.mp.battleship.interaction.GameInteractor;
-import team2.mp.battleship.model.board.Board;
-import team2.mp.battleship.model.board.Bomb;
-import team2.mp.battleship.model.board.Coordinate;
-import team2.mp.battleship.model.board.LineDestroyer;
-import team2.mp.battleship.model.board.Square.Damage;
 import uo.mp.util.check.ArgumentChecks;
 import uo.mp.util.console.Console;
+import team2.mp.battleship.interaction.GameInteractor;
+import team2.mp.battleship.model.board.Board;
+import team2.mp.battleship.model.board.Coordinate;
+import team2.mp.battleship.model.board.Square.Damage;
+import team2.mp.battleship.model.board.Bomb;
+import team2.mp.battleship.model.board.LineDestroyer;
 
 
 public class Player {
 
 	// Attributes
 	private String name;
+	private boolean computer;
 	private Board myShips;
 	private Board myOpponentShips;
 	private GameInteractor gameInteractor;
@@ -31,10 +32,11 @@ public class Player {
 	 * @param name, String with the name of the player
 	 * @throws IllegalArgumentException if the name is blank or null
 	 */
-	public Player(String name,int numberBombs,int numberLineDestroyer) {
+	public Player(String name,int numberBombs,int numberLineDestroyer, boolean computer) {
 		ArgumentChecks.isNotNull(name);
 		ArgumentChecks.isNotBlank(name);
 		setName(name);
+		this.computer=computer;
 		bomb=new Bomb(numberBombs);
 		lineDestroyer= new LineDestroyer(numberLineDestroyer);
 		
@@ -119,10 +121,15 @@ public class Player {
 	public Coordinate makeChoice() {
 		do {
 			if (this.bomb.getRemainingUse()>0 && this.lineDestroyer.getRemainingUse()>0) {
-				System.out.println("------Bonus options-----");
-				System.out.println("Bomb ------------ Press #");
-				System.out.println("LineDestroyer --- Press @");
-				System.out.print("For using the press the key: ");
+				if (computer)
+				{
+					Coordinate coordinateToShot = getGameInteractor().getTarget();
+					shotCoordinates.addAll(this.useBomb(coordinateToShot));
+					return coordinateToShot;
+				}
+				else {
+				System.out.print("Do you want to use spell ?");
+				System.out.print("Bomb : press #, LineDestroyer : press @");
 
 
 				char caracter = Console.readChar();
@@ -143,9 +150,10 @@ public class Player {
 					}
 				}
 				
+				}
 			}
 			else if (this.bomb.getRemainingUse()>0) {
-				System.out.println("Do you want to use Bomb ?");
+				System.out.print("Do you want to use Bomb ?");
 				System.out.print("Bomb : press #");
 
 
@@ -163,21 +171,29 @@ public class Player {
 				}
 			}
 			else if (this.lineDestroyer.getRemainingUse()>0) {
-				System.out.println("Do you want to use line destroyer ?");
-				System.out.print("LineDestroyer : press @");
-
-
-				char caracter = Console.readChar();
-				Coordinate coordinateToShot = getGameInteractor().getTarget();
-				if (caracter == '@') {
+				if (computer) {
+					Coordinate coordinateToShot = getGameInteractor().getTarget();
 					shotCoordinates.addAll(this.useLineDestroyer(coordinateToShot));
 					return coordinateToShot;
+					
 				}
-				
 				else {
-					if(!shotCoordinates.contains(coordinateToShot)) {
-						shotCoordinates.add(coordinateToShot);
+					System.out.print("Do you want to use line destroyer ?");
+					System.out.print("LineDestroyer : press @");
+	
+	
+					char caracter = Console.readChar();
+					Coordinate coordinateToShot = getGameInteractor().getTarget();
+					if (caracter == '@') {
+						shotCoordinates.addAll(this.useLineDestroyer(coordinateToShot));
 						return coordinateToShot;
+					}
+					
+					else {
+						if(!shotCoordinates.contains(coordinateToShot)) {
+							shotCoordinates.add(coordinateToShot);
+							return coordinateToShot;
+						}
 					}
 				}
 			}

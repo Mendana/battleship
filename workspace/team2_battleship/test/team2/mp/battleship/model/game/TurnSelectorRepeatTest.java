@@ -16,8 +16,8 @@ class TurnSelectorRepeatTest {
 		
 		@BeforeEach
 		void setUp() throws Exception {
-			human = new Player("A", 0, 0);
-			computer = new Player("B", 0, 0);
+			human = new Player("A", 0, 0, false);
+			computer = new Player("B", 0, 0, false);
 			turnSelector = new TurnSelector(human, computer);
 		}
 

@@ -1,5 +1,6 @@
 package team2.mp.battleship.model.board;
 
+
 import java.util.ArrayList;
 
 public class LineDestroyer {
