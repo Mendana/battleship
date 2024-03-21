@@ -34,7 +34,7 @@ public class Game {
 	 * @param size, int with dimension of the board
 	 * @throws IllegalArgumentException if the parameters are null or the dimension is < 10 or > 20
 	 */
-	public Game(Player human, Player computer, int size) {
+	public Game(Player human, Player computer, int size, boolean randomFleet) {
 		ArgumentChecks.isTrue(size >= 10 && size <= 20, " is an invalid argument");
 		ArgumentChecks.isNotNull(computer);
 		ArgumentChecks.isNotNull(human);
@@ -42,8 +42,8 @@ public class Game {
 		setHuman(human);
 		setComputer(computer);
 		turnSelector = new TurnSelector(human, computer);
-		Board humanBoard = new Board(size, true);
-		Board computerBoard = new Board(size, true);
+		Board humanBoard = new Board(size, randomFleet);
+		Board computerBoard = new Board(size, randomFleet);
 		
 		human.setMyShips(humanBoard);
 		human.setOpponentShips(computerBoard);
@@ -60,7 +60,7 @@ public class Game {
 	 * @throws IllegalArgumentException if the parameters are null
 	 */
 	public Game(Player leftPlayer, Player rightPlayer) {
-		this(leftPlayer, rightPlayer, DEFAULT_BOARD_SIZE);		
+		this(leftPlayer, rightPlayer, DEFAULT_BOARD_SIZE, true);		
 	}
 	
 	/**

@@ -77,6 +77,7 @@ public class GamePanel extends JFrame {
 		txtMessageStatusGame.setText("Message Status Game");
 		txtMessageStatusGame.setBounds(461, 96, 241, 58);
 		getContentPane().add(txtMessageStatusGame);
+		txtMessageStatusGame.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		txtMessageStatusGame.setColumns(10);
 		
 		txtYourBoard = new JTextField();
@@ -84,6 +85,8 @@ public class GamePanel extends JFrame {
 		txtYourBoard.setText("Your Board");
 		txtYourBoard.setFont(new Font("Verdana", Font.PLAIN, 18));
 		txtYourBoard.setBounds(156, 176, 138, 29);
+		txtYourBoard.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		txtYourBoard.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		getContentPane().add(txtYourBoard);
 		txtYourBoard.setColumns(10);
 		
@@ -402,6 +405,7 @@ public class GamePanel extends JFrame {
 		txtBonusLeft.setText("Bonus left:");
 		txtBonusLeft.setBounds(536, 253, 96, 19);
 		getContentPane().add(txtBonusLeft);
+		txtBonusLeft.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		txtBonusLeft.setColumns(10);
 		
 		txtXBombs = new JTextField();
@@ -409,6 +413,7 @@ public class GamePanel extends JFrame {
 		txtXBombs.setFont(new Font("Verdana", Font.PLAIN, 16));
 		txtXBombs.setText("x  ----  Bombs ---- x");
 		txtXBombs.setBounds(481, 311, 201, 19);
+		txtXBombs.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		getContentPane().add(txtXBombs);
 		txtXBombs.setColumns(10);
 		
@@ -418,6 +423,7 @@ public class GamePanel extends JFrame {
 		txtXLine.setFont(new Font("Verdana", Font.PLAIN, 16));
 		txtXLine.setColumns(10);
 		txtXLine.setBounds(448, 357, 268, 19);
+		txtXLine.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		getContentPane().add(txtXLine);
 		
 		txtShipsRemainingX = new JTextField();
@@ -425,6 +431,7 @@ public class GamePanel extends JFrame {
 		txtShipsRemainingX.setFont(new Font("Verdana", Font.PLAIN, 16));
 		txtShipsRemainingX.setText("Ships Remaining: x");
 		txtShipsRemainingX.setBounds(130, 215, 186, 29);
+		txtShipsRemainingX.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		getContentPane().add(txtShipsRemainingX);
 		txtShipsRemainingX.setColumns(10);
 		
@@ -434,6 +441,7 @@ public class GamePanel extends JFrame {
 		txtOpponentsBoard.setFont(new Font("Verdana", Font.PLAIN, 18));
 		txtOpponentsBoard.setColumns(10);
 		txtOpponentsBoard.setBounds(861, 176, 186, 29);
+		txtOpponentsBoard.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		getContentPane().add(txtOpponentsBoard);
 		
 		textField_1 = new JTextField();
@@ -442,6 +450,7 @@ public class GamePanel extends JFrame {
 		textField_1.setFont(new Font("Verdana", Font.PLAIN, 16));
 		textField_1.setColumns(10);
 		textField_1.setBounds(861, 215, 186, 29);
+		textField_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		getContentPane().add(textField_1);
 	}
 }

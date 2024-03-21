@@ -108,6 +108,7 @@ public class Menu extends JFrame {
 		txtUserStats.setFont(new Font("Verdana", Font.PLAIN, 18));
 		txtUserStats.setText("User Stats");
 		txtUserStats.setBounds(899, 97, 111, 30);
+		txtUserStats.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		getContentPane().add(txtUserStats);
 		
 		JPanel panel_1 = new JPanel();
@@ -135,6 +136,7 @@ public class Menu extends JFrame {
 		txtGameWith_1.setFont(new Font("Verdana", Font.PLAIN, 16));
 		txtGameWith_1.setText("Game with 2 boards.");
 		txtGameWith_1.setBounds(30, 51, 191, 44);
+		txtGameWith_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2.add(txtGameWith_1);
 		txtGameWith_1.setColumns(10);
 		
@@ -146,6 +148,7 @@ public class Menu extends JFrame {
 		txtBothFleetsAre.setColumns(10);
 		txtBothFleetsAre.setBackground(new Color(99, 99, 99));
 		txtBothFleetsAre.setBounds(10, 81, 231, 44);
+		txtBothFleetsAre.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2.add(txtBothFleetsAre);
 		
 		txtGeneratedTheGame = new JTextField();
@@ -156,6 +159,7 @@ public class Menu extends JFrame {
 		txtGeneratedTheGame.setColumns(10);
 		txtGeneratedTheGame.setBackground(new Color(99, 99, 99));
 		txtGeneratedTheGame.setBounds(10, 114, 231, 44);
+		txtGeneratedTheGame.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2.add(txtGeneratedTheGame);
 		
 		txtWhen = new JTextField();
@@ -166,6 +170,7 @@ public class Menu extends JFrame {
 		txtWhen.setColumns(10);
 		txtWhen.setBackground(new Color(99, 99, 99));
 		txtWhen.setBounds(10, 146, 231, 44);
+		txtWhen.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2.add(txtWhen);
 		
 		txtIsFullyDestroyed = new JTextField();
@@ -176,6 +181,7 @@ public class Menu extends JFrame {
 		txtIsFullyDestroyed.setColumns(10);
 		txtIsFullyDestroyed.setBackground(new Color(99, 99, 99));
 		txtIsFullyDestroyed.setBounds(10, 176, 231, 44);
+		txtIsFullyDestroyed.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2.add(txtIsFullyDestroyed);
 		
 		JPanel panel_2_1 = new JPanel();
@@ -203,6 +209,7 @@ public class Menu extends JFrame {
 		textField.setColumns(10);
 		textField.setBackground(new Color(99, 99, 99));
 		textField.setBounds(30, 51, 191, 44);
+		textField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_1.add(textField);
 		
 		textField_1 = new JTextField();
@@ -213,6 +220,7 @@ public class Menu extends JFrame {
 		textField_1.setColumns(10);
 		textField_1.setBackground(new Color(99, 99, 99));
 		textField_1.setBounds(10, 81, 231, 44);
+		textField_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_1.add(textField_1);
 		
 		txtGeneratedTheGame_1 = new JTextField();
@@ -223,6 +231,7 @@ public class Menu extends JFrame {
 		txtGeneratedTheGame_1.setColumns(10);
 		txtGeneratedTheGame_1.setBackground(new Color(99, 99, 99));
 		txtGeneratedTheGame_1.setBounds(10, 114, 231, 44);
+		txtGeneratedTheGame_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_1.add(txtGeneratedTheGame_1);
 		
 		txtFinishesWhenOne = new JTextField();
@@ -233,6 +242,7 @@ public class Menu extends JFrame {
 		txtFinishesWhenOne.setColumns(10);
 		txtFinishesWhenOne.setBackground(new Color(99, 99, 99));
 		txtFinishesWhenOne.setBounds(10, 146, 231, 44);
+		txtFinishesWhenOne.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_1.add(txtFinishesWhenOne);
 		
 		txtIsFullyDestroyed_1 = new JTextField();
@@ -243,6 +253,7 @@ public class Menu extends JFrame {
 		txtIsFullyDestroyed_1.setColumns(10);
 		txtIsFullyDestroyed_1.setBackground(new Color(99, 99, 99));
 		txtIsFullyDestroyed_1.setBounds(10, 176, 231, 44);
+		txtIsFullyDestroyed_1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_1.add(txtIsFullyDestroyed_1);
 		
 		JPanel panel_2_2 = new JPanel();
@@ -266,6 +277,7 @@ public class Menu extends JFrame {
 		txtLikeANormal.setColumns(10);
 		txtLikeANormal.setBackground(new Color(99, 99, 99));
 		txtLikeANormal.setBounds(30, 63, 191, 44);
+		txtLikeANormal.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_2.add(txtLikeANormal);
 		
 		txtButThereIs = new JTextField();
@@ -276,6 +288,7 @@ public class Menu extends JFrame {
 		txtButThereIs.setColumns(10);
 		txtButThereIs.setBackground(new Color(99, 99, 99));
 		txtButThereIs.setBounds(10, 93, 231, 44);
+		txtButThereIs.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_2.add(txtButThereIs);
 		
 		txtAndALine = new JTextField();
@@ -286,6 +299,7 @@ public class Menu extends JFrame {
 		txtAndALine.setColumns(10);
 		txtAndALine.setBackground(new Color(99, 99, 99));
 		txtAndALine.setBounds(10, 126, 231, 44);
+		txtAndALine.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_2.add(txtAndALine);
 		
 		txtForBothPlayers = new JTextField();
@@ -296,6 +310,7 @@ public class Menu extends JFrame {
 		txtForBothPlayers.setColumns(10);
 		txtForBothPlayers.setBackground(new Color(99, 99, 99));
 		txtForBothPlayers.setBounds(10, 158, 231, 44);
+		txtForBothPlayers.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		panel_2_2.add(txtForBothPlayers);
 	}
 }

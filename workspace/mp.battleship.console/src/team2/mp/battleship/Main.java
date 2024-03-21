@@ -5,6 +5,8 @@ import team2.mp.battleship.console.ConsoleGamePresenter;
 import team2.mp.battleship.interaction.RandomGameInteractor;
 import team2.mp.battleship.model.game.Game;
 import team2.mp.battleship.model.player.Player;
+import uo.mp.util.console.Console;
+
 
 public class Main {
 
@@ -35,7 +37,12 @@ public class Main {
 		
 		ConsoleGamePresenter presenter = new ConsoleGamePresenter();
 		
-		game = new Game( user, computer );
+		boolean randomFleet = true;
+		System.out.print("Do you want to create random fleet? (y/n): ");
+		char character = Console.readChar();
+		randomFleet = (character == 'y')? true:false;
+		
+		game = new Game( user, computer, 10, randomFleet);
 		game.setPresenter(presenter);
 		gameMode = readDebugMode(args[0]);
 		game.setDebugMode(gameMode);
